@@ -1,6 +1,18 @@
+diff -Naur capi4k-utils.orig/capi20/Makefile.in capi4k-utils/capi20/Makefile.in
+--- capi4k-utils.orig/capi20/Makefile.in	2004-12-21 17:45:25.000000000 +0100
++++ capi4k-utils/capi20/Makefile.in	2004-12-22 13:59:04.847116768 +0100
+@@ -261,7 +261,7 @@
+ 	done
+ 
+ libcapi20.la: $(libcapi20_la_OBJECTS) $(libcapi20_la_DEPENDENCIES)
+-	$(LINK) -rpath $(libdir) $(libcapi20_la_LDFLAGS) $(libcapi20_la_OBJECTS) $(libcapi20_la_LIBADD) $(LIBS)
++	$(LINK) -rpath $(libdir) $(libcapi20_la_LDFLAGS) $(libcapi20_la_CFLAGS) $(libcapi20_la_OBJECTS) $(libcapi20_la_LIBADD) $(LIBS)
+ 
+ install-includeHEADERS: $(include_HEADERS)
+ 	@$(NORMAL_INSTALL)
 diff -Naur capi4k-utils.orig/pppdcapiplugin/Rules.make capi4k-utils/pppdcapiplugin/Rules.make
---- capi4k-utils.orig/pppdcapiplugin/Rules.make	2004-12-21 17:45:25.851790632 +0100
-+++ capi4k-utils/pppdcapiplugin/Rules.make	2004-12-21 17:48:14.556143672 +0100
+--- capi4k-utils.orig/pppdcapiplugin/Rules.make	2004-12-21 17:45:25.000000000 +0100
++++ capi4k-utils/pppdcapiplugin/Rules.make	2004-12-22 13:55:14.433145016 +0100
 @@ -21,7 +21,7 @@
  all:	$(ALL)
  
