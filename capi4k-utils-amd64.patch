@@ -1,6 +1,6 @@
 diff -Naur capi4k-utils.orig/capi20/Makefile.in capi4k-utils/capi20/Makefile.in
 --- capi4k-utils.orig/capi20/Makefile.in	2004-12-21 17:45:25.000000000 +0100
-+++ capi4k-utils/capi20/Makefile.in	2004-12-22 14:28:18.193567592 +0100
++++ capi4k-utils/capi20/Makefile.in	2004-12-22 20:44:32.481754152 +0100
 @@ -118,7 +118,7 @@
  libcapi20_la_LIBADD = 
  libcapi20_la_OBJECTS =  capi20.lo capifunc.lo convert.lo
@@ -19,9 +19,33 @@ diff -Naur capi4k-utils.orig/capi20/Makefile.in capi4k-utils/capi20/Makefile.in
  
  install-includeHEADERS: $(include_HEADERS)
  	@$(NORMAL_INSTALL)
+diff -Naur capi4k-utils.orig/Makefile capi4k-utils/Makefile
+--- capi4k-utils.orig/Makefile	2004-12-21 17:45:25.000000000 +0100
++++ capi4k-utils/Makefile	2004-12-22 20:44:47.104531152 +0100
+@@ -121,7 +121,7 @@
+ 	@set -e; for i in `echo $(SUBDIRS)`; do \
+ 		if [ -x $$i/configure ] ; then \
+ 			echo -e "\nRunning configure in $$i ...\n"; sleep 1; \
+-			(cd $$i; ./configure --sbindir=$(CONFIG_SBINDIR) --bindir=$(CONFIG_BINDIR) --mandir=$(CONFIG_MANDIR) || $(MAKE) -C ../ ERRDIR=$$i cfgerror); \
++			(cd $$i; ./configure --sbindir=$(CONFIG_SBINDIR) --bindir=$(CONFIG_BINDIR) --mandir=$(CONFIG_MANDIR) --libdir=$(CONFIG_LIBDIR) || $(MAKE) -C ../ ERRDIR=$$i cfgerror); \
+ 		elif [ -f $$i/Makefile.in ] ; then \
+ 			echo -e "\nRunning make -f Makefile.in config in $$i ...\n"; sleep 1; \
+ 			$(MAKE) -C $$i -f Makefile.in config; \
+diff -Naur capi4k-utils.orig/pppdcapiplugin/ppp-2.4.2/Makefile capi4k-utils/pppdcapiplugin/ppp-2.4.2/Makefile
+--- capi4k-utils.orig/pppdcapiplugin/ppp-2.4.2/Makefile	2004-12-21 17:45:25.000000000 +0100
++++ capi4k-utils/pppdcapiplugin/ppp-2.4.2/Makefile	2004-12-22 20:44:47.104531152 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
 diff -Naur capi4k-utils.orig/pppdcapiplugin/Rules.make capi4k-utils/pppdcapiplugin/Rules.make
 --- capi4k-utils.orig/pppdcapiplugin/Rules.make	2004-12-21 17:45:25.000000000 +0100
-+++ capi4k-utils/pppdcapiplugin/Rules.make	2004-12-22 14:16:38.389953912 +0100
++++ capi4k-utils/pppdcapiplugin/Rules.make	2004-12-22 20:44:32.481754152 +0100
 @@ -21,7 +21,7 @@
  all:	$(ALL)
  
