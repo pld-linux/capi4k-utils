@@ -1,0 +1,12 @@
+diff -Naur capi4k-utils.orig/pppdcapiplugin/Rules.make capi4k-utils/pppdcapiplugin/Rules.make
+--- capi4k-utils.orig/pppdcapiplugin/Rules.make	2004-12-21 17:45:25.851790632 +0100
++++ capi4k-utils/pppdcapiplugin/Rules.make	2004-12-21 17:48:14.556143672 +0100
+@@ -21,7 +21,7 @@
+ all:	$(ALL)
+ 
+ capiplugin.so: capiplugin.o capiconn.o
+-	$(CC) -o $@ $(LDFLAGS) capiplugin.o capiconn.o -lcapi20dyn
++	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) capiplugin.o capiconn.o -lcapi20dyn
+ 
+ userpass.so: userpass.o
+ 	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) -nostdlib userpass.o
