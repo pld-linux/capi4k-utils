@@ -148,7 +148,9 @@ Wtyczka capi dla pppd w wersji %{ppp_ver}.
 %prep
 %setup -q -n %{name}
 %patch0 -p1
+%ifarch amd64
 %patch1 -p1
+%endif
 
 cat > .config << END
 CONFIG_BINDIR='%{_bindir}'
