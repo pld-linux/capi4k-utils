@@ -1,12 +1,15 @@
+
+%bcond_with	capifax   # capifax has some error and won't build right now
+
 Summary:	CAPI 2.0 libraries and configuration tools
 Summary(de):	CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
 Summary(pl):	Biblioteki i narzêdzia konfiguracyjne CAPI 2.0
 Name:		capi4k-utils
-Version:	2004.03.31
+Version:	2004.10.06
 Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	ftp://ftp.in-berlin.de/pub/capi4linux/%{name}-2004-03-31.tar.gz
+Source0:	ftp://ftp.in-berlin.de/pub/capi4linux/%{name}-2004-10-06.tar.gz
 Source1:	ftp://ftp.in-berlin.de/pub/capi4linux/CHANGES
 Source10:	capi.conf
 Source11:	capi.init
@@ -74,6 +77,7 @@ Static versions of capi libraries.
 %description static -l pl
 Statyczne wersje bibliotek capi.
 
+%if %{with capifax}
 %package capifax
 Summary:	CAPI 2.0 fax tool
 Summary(de):	CAPI 2.0 Fax Programm
@@ -98,6 +102,8 @@ Podstawowe programy do wysy³ania i odbierania faksów przez CAPI 2.0.
 
 PORADA: Je¶li zamierzasz korzystaæ z innego pakietu do obs³ugi faksów
         (np. capisuite lub hylafax) to nie potrzebujesz tego pakietu.
+
+%endif
 
 %package remotecapi
 Summary:	CAPI 2.0 remote tool
@@ -145,7 +151,7 @@ CONFIG_BINDIR='%{_bindir}'
 CONFIG_SBINDIR='%{_sbindir}'
 CONFIG_MANDIR='%{_mandir}'
 CONFIG_AVMCAPICTRL=y
-CONFIG_CAPIFAX=y
+%{?with_capifax:CONFIG_CAPIFAX=y}
 CONFIG_RCAPID=y
 CONFIG_PPPDCAPIPLUGIN=y
 END
@@ -222,9 +228,11 @@ exit 0
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
 
+%if %{with capifax}
 %files capifax
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/capifax*
+%endif
 
 %files remotecapi
 %defattr(644,root,root,755)
