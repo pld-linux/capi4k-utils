@@ -1,6 +1,6 @@
 Summary:	CAPI 2.0 libraries and configuration tools
 Summary(de):	CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
-Summary(pl):	Biblioteki i narzedzia konfiguracyjne CAPI 2.0
+Summary(pl):	Biblioteki i narzêdzia konfiguracyjne CAPI 2.0
 Name:		capi4k-utils
 Version:	2004.03.31
 Release:	1
@@ -15,6 +15,7 @@ URL:		ftp://ftp.in-berlin.de/pub/capi4linux/
 BuildRequires:	libtool
 BuildRequires:	ppp-plugin-devel
 PreReq:		rc-scripts
+Requires(post,postun):	/sbin/ldconfig
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -37,29 +38,41 @@ Sie zusätzlich entsprechende Treiber installieren.
 W tym pakiecie zawarte s± biblioteki wspó³dzielone libcapi20 oraz
 narzêdzia s³u¿±ce do ³adowania i konfiguracji sterowników CAPI.
 
-Aby skorzystaæ z tych narzêdzi bêdziesz potrzebowa³ jeszcze
-odpowiedniego sterownika do swojej karty ISDN. Kilka takich
-sterowników znajduje siê ju¿ w j±drze.
+Aby skorzystaæ z tych narzêdzi potrzebny jest jeszcze odpowiedni
+sterownik do karty ISDN. Kilka takich sterowników znajduje siê ju¿ w
+j±drze.
 
 %package devel
-Summary:	Static library and header files for capi development.
-Summary(pl):	Pliki nag³ówkowe i biblioteki statyczne libcapi.
-Summary(de):	Bibliotheken und Kopfdateien zur Entwicklung von CAPI Programmen
+Summary:	Header files for capi development
+Summary(pl):	Pliki nag³ówkowe capi
+Summary(de):	Kopfdateien zur Entwicklung von CAPI Programmen
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-The capi4k-utils-devel package contains the capi static library and
-header files required to develop capi applications.
+This package contains the header files required to develop capi
+applications.
 
 %description devel
-Ten pakiet zawiera pliki nag³ówkowe i biblioteki statyczne potrzebne
-do budowania programów korzystaj±cych ze sterowników w standardzie
-CAPI poprzez bibliotekê libcapi.
+Ten pakiet zawiera pliki nag³ówkowe potrzebne do budowania programów
+korzystaj±cych ze sterowników w standardzie CAPI poprzez bibliotekê
+libcapi.
 
 %description devel -l de
-Dieses Paket stellt die notwendigen Bibliotheken und andere Dateien
-bereit um CAPI Programme zu entwickeln oder neu zu Übersetzen.
+Dieses Paket stellt die Dateien bereit um CAPI Programme zu entwickeln
+oder neu zu Übersetzen.
+
+%package static
+Summary:	Static capi libraries
+Summary(pl):	Statyczne biblioteki capi
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+Static versions of capi libraries.
+
+%description static -l pl
+Statyczne wersje bibliotek capi.
 
 %package capifax
 Summary:	CAPI 2.0 fax tool
@@ -141,52 +154,54 @@ install -p %{SOURCE1} .
 
 %build
 %{__make} subconfig
-%{__make} PPPVERSIONS=%{ppp_ver}
+%{__make} \
+	PPPVERSIONS=%{ppp_ver}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} PPPVERSIONS=%{ppp_ver} install \
+
+%{__make} install \
+	PPPVERSIONS=%{ppp_ver} \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # Firmware goes here - see LSB and kernel 2.6.x ISDN stuff
-install -d %{buildroot}%{_datadir}/isdn
+install -d $RPM_BUILD_ROOT%{_datadir}/isdn
 
 # install capi configuration file used by capiinit
-install -d %{buildroot}%{_sysconfdir}/capi
-install %{SOURCE10} %{buildroot}%{_sysconfdir}/capi/
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/capi
+install %{SOURCE10} $RPM_BUILD_ROOT%{_sysconfdir}/capi
 
 # install capi startup script
-install -D %{SOURCE11} %{buildroot}%{_initrddir}/capi
-
-%post -n %{name}
-/sbin/ldconfig
-/sbin/chkconfig --add capi
-exit 0
-
-%preun -n %{name}
-if [ "$1" = "0" ]; then
-	/sbin/service capi stop > /dev/null 2>&1
-	/sbin/chkconfig --del capi
-fi
-exit 0
-
-%postun -n %{name}
-/sbin/ldconfig
-if [ "$1" -ge "1" ]; then
-	/sbin/service capi stop > /dev/null 2>&1
-fi
-exit 0
+install -D %{SOURCE11} $RPM_BUILD_ROOT%{_initrddir}/capi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+/sbin/ldconfig
+/sbin/chkconfig --add capi
+exit 0
+
+%preun
+if [ "$1" = "0" ]; then
+	/etc/rc.d/init.d/capi stop >&2
+	/sbin/chkconfig --del capi
+fi
+exit 0
+
+%postun
+/sbin/ldconfig
+if [ "$1" -ge "1" ]; then
+	/etc/rc.d/init.d/capi stop >&2
+fi
+exit 0
+
 %files
 %defattr(644,root,root,755)
-%doc CHANGES
-%doc pppdcapiplugin/examples
-%attr(0755,root,root) %{_bindir}/capiinfo
-%attr(0755,root,root) %{_sbindir}/capiinit
-%attr(0755,root,root) %{_sbindir}/avmcapictrl
+%doc CHANGES pppdcapiplugin/examples
+%attr(755,root,root) %{_bindir}/capiinfo
+%attr(755,root,root) %{_sbindir}/capiinit
+%attr(755,root,root) %{_sbindir}/avmcapictrl
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(754,root,root) %{_initrddir}/capi
 %{_mandir}/man8/capiinfo.8*
@@ -200,18 +215,20 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_includedir}/*
 %{_libdir}/lib*.la
-# to chyba powinno isc do -static, ale nie wiem...
+%{_includedir}/*
+
+%files static
+%defattr(644,root,root,755)
 %{_libdir}/lib*.a
 
 %files capifax
 %defattr(644,root,root,755)
-%attr(0755,root,root) %{_bindir}/capifax*
+%attr(755,root,root) %{_bindir}/capifax*
 
 %files remotecapi
 %defattr(644,root,root,755)
-%attr(0755,root,root) %{_sbindir}/rcapid
+%attr(755,root,root) %{_sbindir}/rcapid
 
 %files -n ppp-plugin-capi
 %defattr(644,root,root,755)
