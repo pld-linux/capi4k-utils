@@ -10,7 +10,9 @@ Release:	1
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.in-berlin.de/pub/capi4linux/%{name}-2004-10-06.tar.gz
+# Source0-md5:	54992ff362ca44629fdf59773a6864cd
 Source1:	ftp://ftp.in-berlin.de/pub/capi4linux/CHANGES
+# Source1-md5:	054b9f2bf1b0c0fc1eb5010ca0c9380d
 Source10:	capi.conf
 Source11:	capi.init
 Patch0:		%{name}-make.patch
