@@ -1,0 +1,44 @@
+#! /bin/sh
+#
+# capi          Start/Stop the CAPI 2.0 drivers.
+#
+# chkconfig:	2345 09 91
+# description:	CAPI is a UNIX program that starts the CAPI 2.0 interface \
+#		for CAPI compatible devices, like AVM PCI and USB devices, \
+#		certain Eicon DIVA cards, certain Siemens Gigaset devices, \
+#		certain Hagenuk external modems, etc..
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+
+# See how we were called.
+case "$1" in
+  start)
+	msg_starting "CAPI 2.0 drivers"
+	daemon capiinit start
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && touch /var/lock/subsys/capi
+	;;
+  stop)
+	msg_stopping "CAPI 2.0 drivers"
+	daemon capiinit stop
+	RETVAL=$?
+	[ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/capi
+	;;
+  status)
+	daemon capiinit show
+	RETVAL=$?
+	;;
+  restart)
+  	$0 stop
+	$0 start
+	RETVAL=$?
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|status}"
+	exit 3
+esac
+
+exit $RETVAL

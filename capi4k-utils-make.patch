@@ -1,0 +1,55 @@
+diff -uNr capi4k-utils.orig/Makefile capi4k-utils/Makefile
+--- capi4k-utils.orig/Makefile	2002-11-20 14:45:14.000000000 +0100
++++ capi4k-utils/Makefile	2004-04-24 19:40:56.603079576 +0200
+@@ -55,23 +55,10 @@
+ subtargets: $(CONFIGURATION)
+ 	set -e; for i in `echo $(SUBDIRS)`; do $(MAKE) -C $$i all; done
+ 
+-rootperm:
+-	@echo 'main(int argc,char**argv){unlink(argv[0]);return(getuid()==0);}'>g
+-	@if gcc -x c -o G g && rm -f g && ./G ; then \
+-		echo -e "\n\n      Need root permission for (de)installation!\n\n"; \
+-		exit 1; \
+-	fi
+-
+-install: rootperm
++install:
+ 	set -e; for i in `echo $(SUBDIRS)`; do $(MAKE) -C $$i install; done
+-	@if [ -c $(DESTDIR)/dev/isdnctrl0 ] && ls -l $(DESTDIR)/dev/isdnctrl0 | egrep "[[:space:]]45,[[:space:]]+64[[:space:]]" > /dev/null; \
+-	then \
+-		echo -e '(some) ISDN devices already exist, not creating them.\nUse scripts/makedev.sh manually if necessary.'; \
+-	else \
+-		sh scripts/makedev.sh $(DESTDIR) ; \
+-	fi
+ 
+-uninstall: rootperm
++uninstall:
+ 	set -e; for i in `echo $(SUBDIRS)`; do $(MAKE) -C $$i uninstall; done
+ 
+ #
+diff -uNr capi4k-utils.orig/avmb1/Makefile.in capi4k-utils/avmb1/Makefile.in
+--- capi4k-utils.orig/avmb1/Makefile.in	2002-10-26 21:27:40.000000000 +0200
++++ capi4k-utils/avmb1/Makefile.in	2004-04-24 19:39:42.971273312 +0200
+@@ -15,8 +15,8 @@
+ MANDIR			= @CONFIG_MANDIR@
+ MAN8DIR			= $(MANDIR)/man8
+ INSTALL			= @INSTALL@
+-INSTALL_PROGRAM	= $(INSTALL) -o 0 -g 0 -m 0750
+-INSTALL_MAN		= $(INSTALL) -o 0 -g 0 -m 0644
++INSTALL_PROGRAM	= $(INSTALL)
++INSTALL_MAN		= $(INSTALL)
+ prefix			= @prefix@
+ exec_prefix		= @exec_prefix@
+ CC				= @CC@
+diff -uNr capi4k-utils.orig/pppdcapiplugin/Makefile capi4k-utils/pppdcapiplugin/Makefile
+--- capi4k-utils.orig/pppdcapiplugin/Makefile	2004-02-23 19:30:39.000000000 +0100
++++ capi4k-utils/pppdcapiplugin/Makefile	2004-04-24 19:40:56.604079424 +0200
+@@ -12,7 +12,7 @@
+ export CAPIINC=$(TOPDIR)/../capi20
+ export CAPILIB=$(TOPDIR)/../capi20
+ export INSTALL=$(TOPDIR)/install-sh -c
+-export INSTALLDATA=$(TOPDIR)/install-sh -c -o root -m 600
++export INSTALLDATA=$(TOPDIR)/install-sh -c
+ export MKDIR=$(TOPDIR)/mkinstalldirs
+ 
+ PPPSRCDIRS=/src/isdn/pppd
