@@ -16,6 +16,7 @@ Source1:	ftp://ftp.in-berlin.de/pub/capi4linux/CHANGES
 Source10:	capi.conf
 Source11:	capi.init
 Patch0:		%{name}-make.patch
+Patch1:		%{name}-amd64.patch
 URL:		ftp://ftp.in-berlin.de/pub/capi4linux/
 BuildRequires:	libtool
 BuildRequires:	ppp-plugin-devel
@@ -147,6 +148,7 @@ Wtyczka capi dla pppd w wersji %{ppp_ver}.
 %prep
 %setup -q -n %{name}
 %patch0 -p1
+%patch1 -p1
 
 cat > .config << END
 CONFIG_BINDIR='%{_bindir}'
