@@ -1,6 +1,15 @@
 diff -Naur capi4k-utils.orig/capi20/Makefile.in capi4k-utils/capi20/Makefile.in
 --- capi4k-utils.orig/capi20/Makefile.in	2004-12-21 17:45:25.000000000 +0100
-+++ capi4k-utils/capi20/Makefile.in	2004-12-22 13:59:04.847116768 +0100
++++ capi4k-utils/capi20/Makefile.in	2004-12-22 14:28:18.193567592 +0100
+@@ -118,7 +118,7 @@
+ libcapi20_la_LIBADD = 
+ libcapi20_la_OBJECTS =  capi20.lo capifunc.lo convert.lo
+ CFLAGS = @CFLAGS@
+-COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
++COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -fPIC
+ LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+ CCLD = $(CC)
+ LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
 @@ -261,7 +261,7 @@
  	done
  
@@ -12,7 +21,7 @@ diff -Naur capi4k-utils.orig/capi20/Makefile.in capi4k-utils/capi20/Makefile.in
  	@$(NORMAL_INSTALL)
 diff -Naur capi4k-utils.orig/pppdcapiplugin/Rules.make capi4k-utils/pppdcapiplugin/Rules.make
 --- capi4k-utils.orig/pppdcapiplugin/Rules.make	2004-12-21 17:45:25.000000000 +0100
-+++ capi4k-utils/pppdcapiplugin/Rules.make	2004-12-22 13:55:14.433145016 +0100
++++ capi4k-utils/pppdcapiplugin/Rules.make	2004-12-22 14:16:38.389953912 +0100
 @@ -21,7 +21,7 @@
  all:	$(ALL)
  
