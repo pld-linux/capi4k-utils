@@ -148,7 +148,7 @@ Wtyczka capi dla pppd w wersji %{ppp_ver}.
 %prep
 %setup -q -n %{name}
 %patch0 -p1
-%ifarch amd64
+%if "%{_lib}" == "lib64"
 %patch1 -p1
 %endif
 
