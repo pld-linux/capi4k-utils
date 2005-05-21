@@ -137,7 +137,7 @@ Summary:	capiplugin for pppd-%{ppp_ver}
 Summary(pl):	Wtyczka capi dla pppd w wersji %{ppp_ver}
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
-Requires:	ppp = %{ppp_ver}
+Requires:	ppp = 3:%{ppp_ver}
 
 %description -n ppp-plugin-capi
 capiplugin for pppd-%{ppp_ver}.
