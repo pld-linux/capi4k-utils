@@ -5,14 +5,14 @@ Summary:	CAPI 2.0 libraries and configuration tools
 Summary(de):	CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
 Summary(pl):	Biblioteki i narzêdzia konfiguracyjne CAPI 2.0
 Name:		capi4k-utils
-Version:	2004.10.06
-Release:	3
+Version:	2005.07.18
+Release:	1
 License:	GPL
 Group:		Applications/Communications
-Source0:	ftp://ftp.in-berlin.de/pub/capi4linux/%{name}-2004-10-06.tar.gz
-# Source0-md5:	54992ff362ca44629fdf59773a6864cd
+Source0:	ftp://ftp.in-berlin.de/pub/capi4linux/%{name}-2005-07-18.tar.gz
+# Source0-md5:	c745759b6b3d64e19763727176648cdf
 Source1:	ftp://ftp.in-berlin.de/pub/capi4linux/CHANGES
-# Source1-md5:	054b9f2bf1b0c0fc1eb5010ca0c9380d
+# Source1-md5:	03739a0170eba14f03f7dc7ccc58bba8
 Source10:	capi.conf
 Source11:	capi.init
 Patch0:		%{name}-make.patch
