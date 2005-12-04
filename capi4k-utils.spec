@@ -20,7 +20,7 @@ Patch1:		%{name}-amd64.patch
 URL:		ftp://ftp.in-berlin.de/pub/capi4linux/
 BuildRequires:	libtool
 BuildRequires:	ppp-plugin-devel
-PreReq:		rc-scripts
+Requires:	rc-scripts
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,preun):	/sbin/chkconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -221,7 +221,7 @@ exit 0
 %{_mandir}/man8/avmcapictrl.8*
 %dir %{_datadir}/isdn
 %dir %{_sysconfdir}/capi
-%config(noreplace) %verify(not md5 size mtime) %{_sysconfdir}/capi/capi.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/capi/capi.conf
 # mi to nie chce dzialac, wypisuje ze brak pliku
 #%ghost %{_sysconfdir}/capi.conf
 
