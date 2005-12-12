@@ -20,9 +20,9 @@ Patch1:		%{name}-amd64.patch
 URL:		ftp://ftp.in-berlin.de/pub/capi4linux/
 BuildRequires:	libtool
 BuildRequires:	ppp-plugin-devel
-Requires:	rc-scripts
 Requires(post,postun):	/sbin/ldconfig
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		ppp_ver		%(awk -F'"' '/VERSION/ { print $2 }' /usr/include/pppd/patchlevel.h 2>/dev/null || echo ERROR)
