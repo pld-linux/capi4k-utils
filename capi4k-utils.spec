@@ -20,7 +20,8 @@ Patch1:		%{name}-amd64.patch
 URL:		ftp://ftp.in-berlin.de/pub/capi4linux/
 BuildRequires:	libtool
 BuildRequires:	ppp-plugin-devel
-Requires(post,postun):	/sbin/ldconfig
+BuildRequires:	rpmbuild(macros) >= 1.268
+Requires(post):	/sbin/ldconfig
 Requires(post,preun):	/sbin/chkconfig
 Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -50,8 +51,8 @@ j±drze.
 
 %package devel
 Summary:	Header files for capi development
-Summary(pl):	Pliki nag³ówkowe capi
 Summary(de):	Kopfdateien zur Entwicklung von CAPI Programmen
+Summary(pl):	Pliki nag³ówkowe capi
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -193,21 +194,15 @@ rm -rf $RPM_BUILD_ROOT
 %post
 /sbin/ldconfig
 /sbin/chkconfig --add capi
-exit 0
+%service capi restart
 
 %preun
 if [ "$1" = "0" ]; then
-	/etc/rc.d/init.d/capi stop >&2
+	%service capi stop
 	/sbin/chkconfig --del capi
 fi
-exit 0
 
-%postun
-/sbin/ldconfig
-if [ "$1" -ge "1" ]; then
-	/etc/rc.d/init.d/capi stop >&2
-fi
-exit 0
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
