@@ -1,5 +1,5 @@
 
-%bcond_with	capifax   # capifax has some error and won't build right now
+%bcond_with	capifax	# capifax has some error and won't build right now
 
 Summary:	CAPI 2.0 libraries and configuration tools
 Summary(de):	CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
