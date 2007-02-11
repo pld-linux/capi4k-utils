@@ -60,7 +60,7 @@ Requires:	%{name} = %{version}-%{release}
 This package contains the header files required to develop capi
 applications.
 
-%description devel
+%description devel -l pl
 Ten pakiet zawiera pliki nag³ówkowe potrzebne do budowania programów
 korzystaj±cych ze sterowników w standardzie CAPI poprzez bibliotekê
 libcapi.
