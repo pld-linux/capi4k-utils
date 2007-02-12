@@ -2,8 +2,8 @@
 %bcond_with	capifax	# capifax has some error and won't build right now
 
 Summary:	CAPI 2.0 libraries and configuration tools
-Summary(de):	CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
-Summary(pl):	Biblioteki i narzêdzia konfiguracyjne CAPI 2.0
+Summary(de.UTF-8):   CAPI 2.0 Werkzeuge fÃ¼r verschiedene ISDN Karten
+Summary(pl.UTF-8):   Biblioteki i narzÄ™dzia konfiguracyjne CAPI 2.0
 Name:		capi4k-utils
 Version:	2005.07.18
 Release:	1
@@ -36,23 +36,23 @@ In order to use the tools you need to install the appropriate driver
 for the adapter. Native driver packages for some adapters are provided
 with the kernel.
 
-%description -l de
+%description -l de.UTF-8
 Dies sind die notwendigen Grundprogramme um verschiedene CAPI 2.0
-fähige Geräte und ISDN Karten einzurichten. Für einige Karten müssen
-Sie zusätzlich entsprechende Treiber installieren.
+fÃ¤hige GerÃ¤te und ISDN Karten einzurichten. FÃ¼r einige Karten mÃ¼ssen
+Sie zusÃ¤tzlich entsprechende Treiber installieren.
 
-%description -l pl
-W tym pakiecie zawarte s± biblioteki wspó³dzielone libcapi20 oraz
-narzêdzia s³u¿±ce do ³adowania i konfiguracji sterowników CAPI.
+%description -l pl.UTF-8
+W tym pakiecie zawarte sÄ… biblioteki wspÃ³Å‚dzielone libcapi20 oraz
+narzÄ™dzia sÅ‚uÅ¼Ä…ce do Å‚adowania i konfiguracji sterownikÃ³w CAPI.
 
-Aby skorzystaæ z tych narzêdzi potrzebny jest jeszcze odpowiedni
-sterownik do karty ISDN. Kilka takich sterowników znajduje siê ju¿ w
-j±drze.
+Aby skorzystaÄ‡ z tych narzÄ™dzi potrzebny jest jeszcze odpowiedni
+sterownik do karty ISDN. Kilka takich sterownikÃ³w znajduje siÄ™ juÅ¼ w
+jÄ…drze.
 
 %package devel
 Summary:	Header files for capi development
-Summary(de):	Kopfdateien zur Entwicklung von CAPI Programmen
-Summary(pl):	Pliki nag³ówkowe capi
+Summary(de.UTF-8):   Kopfdateien zur Entwicklung von CAPI Programmen
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe capi
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -60,32 +60,32 @@ Requires:	%{name} = %{version}-%{release}
 This package contains the header files required to develop capi
 applications.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe potrzebne do budowania programów
-korzystaj±cych ze sterowników w standardzie CAPI poprzez bibliotekê
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe potrzebne do budowania programÃ³w
+korzystajÄ…cych ze sterownikÃ³w w standardzie CAPI poprzez bibliotekÄ™
 libcapi.
 
-%description devel -l de
+%description devel -l de.UTF-8
 Dieses Paket stellt die Dateien bereit um CAPI Programme zu entwickeln
-oder neu zu Übersetzen.
+oder neu zu Ãœbersetzen.
 
 %package static
 Summary:	Static capi libraries
-Summary(pl):	Statyczne biblioteki capi
+Summary(pl.UTF-8):   Statyczne biblioteki capi
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static versions of capi libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczne wersje bibliotek capi.
 
 %if %{with capifax}
 %package capifax
 Summary:	CAPI 2.0 fax tool
-Summary(de):	CAPI 2.0 Fax Programm
-Summary(pl):	Proste narzêdzia do faksowania wykorzystuj±cy mo¿liwo¶ci CAPI 2.0
+Summary(de.UTF-8):   CAPI 2.0 Fax Programm
+Summary(pl.UTF-8):   Proste narzÄ™dzia do faksowania wykorzystujÄ…cy moÅ¼liwoÅ›ci CAPI 2.0
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 
@@ -95,24 +95,24 @@ Native tools for sending and receiving fax with CAPI 2.0.
 HINT: If you intend to use other CAPI 2.0 compliant fax software you
       do not need to install this package.
 
-%description capifax -l de
+%description capifax -l de.UTF-8
 Basis Programm zum Senden und Empfangen von Fax mittels CAPI 2.0.
 
-HINWEIS: Falls Sie andere CAPI 2.0 fähige Faxprogramme einsetzen
+HINWEIS: Falls Sie andere CAPI 2.0 fÃ¤hige Faxprogramme einsetzen
          wollen brauchen Sie dieses Paket nicht installieren.
 
-%description capifax -l pl
-Podstawowe programy do wysy³ania i odbierania faksów przez CAPI 2.0.
+%description capifax -l pl.UTF-8
+Podstawowe programy do wysyÅ‚ania i odbierania faksÃ³w przez CAPI 2.0.
 
-PORADA: Je¶li zamierzasz korzystaæ z innego pakietu do obs³ugi faksów
+PORADA: JeÅ›li zamierzasz korzystaÄ‡ z innego pakietu do obsÅ‚ugi faksÃ³w
         (np. capisuite lub hylafax) to nie potrzebujesz tego pakietu.
 
 %endif
 
 %package remotecapi
 Summary:	CAPI 2.0 remote tool
-Summary(de):	CAPI 2.0 Fernsteuerungsprogramm
-Summary(pl):	Program udostêpniaj±cy interface CAPI 2.0 przez sieæ
+Summary(de.UTF-8):   CAPI 2.0 Fernsteuerungsprogramm
+Summary(pl.UTF-8):   Program udostÄ™pniajÄ…cy interface CAPI 2.0 przez sieÄ‡
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 
@@ -122,20 +122,20 @@ Native tool for remote control (login) with CAPI 2.0.
 ATTENTION: This is extreme BETA.
            Avoid to install this package.
 
-%description remotecapi -l de
+%description remotecapi -l de.UTF-8
 Basis Programm zu Fernsteuerung (Login) mittels CAPI 2.0.
 
 ACHTUNG: Dieses Programm ist BETA Testsoftware.
          Vermeiden Sie dieses Paket zu installieren.
 
-%description remotecapi -l pl
-Program udostêpniaj±cy interface CAPI 2.0 przez sieæ
+%description remotecapi -l pl.UTF-8
+Program udostÄ™pniajÄ…cy interface CAPI 2.0 przez sieÄ‡
 
-UWAGA: To jest na razie BETA. Tylko do testów.
+UWAGA: To jest na razie BETA. Tylko do testÃ³w.
 
 %package -n ppp-plugin-capi
 Summary:	capiplugin for pppd-%{ppp_ver}
-Summary(pl):	Wtyczka capi dla pppd w wersji %{ppp_ver}
+Summary(pl.UTF-8):   Wtyczka capi dla pppd w wersji %{ppp_ver}
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 Requires:	ppp = 3:%{ppp_ver}
@@ -143,7 +143,7 @@ Requires:	ppp = 3:%{ppp_ver}
 %description -n ppp-plugin-capi
 capiplugin for pppd-%{ppp_ver}.
 
-%description -n ppp-plugin-capi -l pl
+%description -n ppp-plugin-capi -l pl.UTF-8
 Wtyczka capi dla pppd w wersji %{ppp_ver}.
 
 %prep
