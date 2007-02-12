@@ -2,8 +2,8 @@
 %bcond_with	capifax	# capifax has some error and won't build right now
 
 Summary:	CAPI 2.0 libraries and configuration tools
-Summary(de.UTF-8):   CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
-Summary(pl.UTF-8):   Biblioteki i narzędzia konfiguracyjne CAPI 2.0
+Summary(de.UTF-8):	CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
+Summary(pl.UTF-8):	Biblioteki i narzędzia konfiguracyjne CAPI 2.0
 Name:		capi4k-utils
 Version:	2005.07.18
 Release:	1
@@ -51,8 +51,8 @@ jądrze.
 
 %package devel
 Summary:	Header files for capi development
-Summary(de.UTF-8):   Kopfdateien zur Entwicklung von CAPI Programmen
-Summary(pl.UTF-8):   Pliki nagłówkowe capi
+Summary(de.UTF-8):	Kopfdateien zur Entwicklung von CAPI Programmen
+Summary(pl.UTF-8):	Pliki nagłówkowe capi
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -71,7 +71,7 @@ oder neu zu Übersetzen.
 
 %package static
 Summary:	Static capi libraries
-Summary(pl.UTF-8):   Statyczne biblioteki capi
+Summary(pl.UTF-8):	Statyczne biblioteki capi
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -84,8 +84,8 @@ Statyczne wersje bibliotek capi.
 %if %{with capifax}
 %package capifax
 Summary:	CAPI 2.0 fax tool
-Summary(de.UTF-8):   CAPI 2.0 Fax Programm
-Summary(pl.UTF-8):   Proste narzędzia do faksowania wykorzystujący możliwości CAPI 2.0
+Summary(de.UTF-8):	CAPI 2.0 Fax Programm
+Summary(pl.UTF-8):	Proste narzędzia do faksowania wykorzystujący możliwości CAPI 2.0
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 
@@ -111,8 +111,8 @@ PORADA: Jeśli zamierzasz korzystać z innego pakietu do obsługi faksów
 
 %package remotecapi
 Summary:	CAPI 2.0 remote tool
-Summary(de.UTF-8):   CAPI 2.0 Fernsteuerungsprogramm
-Summary(pl.UTF-8):   Program udostępniający interface CAPI 2.0 przez sieć
+Summary(de.UTF-8):	CAPI 2.0 Fernsteuerungsprogramm
+Summary(pl.UTF-8):	Program udostępniający interface CAPI 2.0 przez sieć
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 
@@ -135,7 +135,7 @@ UWAGA: To jest na razie BETA. Tylko do testów.
 
 %package -n ppp-plugin-capi
 Summary:	capiplugin for pppd-%{ppp_ver}
-Summary(pl.UTF-8):   Wtyczka capi dla pppd w wersji %{ppp_ver}
+Summary(pl.UTF-8):	Wtyczka capi dla pppd w wersji %{ppp_ver}
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
 Requires:	ppp = 3:%{ppp_ver}
