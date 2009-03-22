@@ -186,7 +186,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/capi
 install %{SOURCE10} $RPM_BUILD_ROOT%{_sysconfdir}/capi
 
 # install capi startup script
-install -D %{SOURCE11} $RPM_BUILD_ROOT%{_initrddir}/capi
+install -D %{SOURCE11} $RPM_BUILD_ROOT/etc/rc.d/init.d/capi
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -211,7 +211,7 @@ fi
 %attr(755,root,root) %{_sbindir}/capiinit
 %attr(755,root,root) %{_sbindir}/avmcapictrl
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(754,root,root) %{_initrddir}/capi
+%attr(754,root,root) /etc/rc.d/init.d/capi
 %{_mandir}/man8/capiinfo.8*
 %{_mandir}/man8/avmcapictrl.8*
 %dir %{_datadir}/isdn
