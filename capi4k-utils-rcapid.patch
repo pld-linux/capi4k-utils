@@ -1,0 +1,28 @@
+--- capi4k-utils.orig/rcapid/rcapid.c	2000-01-29 19:52:25.000000000 +0100
++++ capi4k-utils/rcapid/rcapid.c	2010-07-21 13:08:15.901331523 +0200
+@@ -483,7 +483,10 @@
+ 	char	*p;
+ 
+ 	structure	retstruct;
+-	char		retval [80];
++	union {
++		char		c [80];
++		unsigned short	s;
++	} retval;
+ 
+ 
+ 	log(5, "RCAPI_GET_PROFILE_REQ\n");
+@@ -496,10 +499,10 @@
+ 	CtrlNr = get_dword(&p);
+ 	log(5, "\tCtrlNr: %d\n", CtrlNr);
+ 
+-	memset(retval, 0, sizeof(retval));
+-	*(unsigned short *)retval = CAPI20_GET_PROFILE(CtrlNr, retval+2); 
++	memset(&retval, 0, sizeof(retval));
++	retval.s = CAPI20_GET_PROFILE(CtrlNr, retval.c+2); 
+ 	retstruct.len = 66;
+-	retstruct.data = retval;
++	retstruct.data = retval.c;
+ 
+ 	return(snd_message(msg, RCAPI_GET_PROFILE_CONF, &retstruct, NULL));
+ }

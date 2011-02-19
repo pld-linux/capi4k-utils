@@ -55,3 +55,123 @@ diff -Naur capi4k-utils.orig/pppdcapiplugin/Rules.make capi4k-utils/pppdcapiplug
  
  userpass.so: userpass.o
  	$(CC) -o $@ $(LDFLAGS) $(CFLAGS) -nostdlib userpass.o
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/Makefile.template ./pppdcapiplugin/Makefile.template
+--- ../capi4k-utils.orig/pppdcapiplugin/Makefile.template	2001-05-01 14:43:49.000000000 +0200
++++ ./pppdcapiplugin/Makefile.template	2011-02-19 22:45:36.613077158 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.3.11/Makefile ./pppdcapiplugin/ppp-2.3.11/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.3.11/Makefile	2001-05-01 14:43:49.000000000 +0200
++++ ./pppdcapiplugin/ppp-2.3.11/Makefile	2011-02-19 22:45:36.609744073 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.0/Makefile ./pppdcapiplugin/ppp-2.4.0/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.0/Makefile	2001-05-01 14:43:50.000000000 +0200
++++ ./pppdcapiplugin/ppp-2.4.0/Makefile	2011-02-19 22:45:36.616410243 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.1/Makefile ./pppdcapiplugin/ppp-2.4.1/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.1/Makefile	2001-05-01 14:43:50.000000000 +0200
++++ ./pppdcapiplugin/ppp-2.4.1/Makefile	2011-02-19 22:45:36.619743328 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.1b1/Makefile ./pppdcapiplugin/ppp-2.4.1b1/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.1b1/Makefile	2001-05-01 14:43:51.000000000 +0200
++++ ./pppdcapiplugin/ppp-2.4.1b1/Makefile	2011-02-19 22:45:36.623076413 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.1b2/Makefile ./pppdcapiplugin/ppp-2.4.1b2/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.1b2/Makefile	2001-05-01 14:43:52.000000000 +0200
++++ ./pppdcapiplugin/ppp-2.4.1b2/Makefile	2011-02-19 22:45:36.626409498 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.2b3/Makefile ./pppdcapiplugin/ppp-2.4.2b3/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.2b3/Makefile	2003-05-18 22:11:15.000000000 +0200
++++ ./pppdcapiplugin/ppp-2.4.2b3/Makefile	2011-02-19 22:45:36.586412480 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.3/Makefile ./pppdcapiplugin/ppp-2.4.3/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.3/Makefile	2004-12-13 23:05:14.000000000 +0100
++++ ./pppdcapiplugin/ppp-2.4.3/Makefile	2011-02-19 22:45:36.626409498 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.4/Makefile ./pppdcapiplugin/ppp-2.4.4/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.4/Makefile	2011-02-19 22:45:02.235639872 +0100
++++ ./pppdcapiplugin/ppp-2.4.4/Makefile	2011-02-19 22:45:36.629742583 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 
+diff -r -u ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.5/Makefile ./pppdcapiplugin/ppp-2.4.5/Makefile
+--- ../capi4k-utils.orig/pppdcapiplugin/ppp-2.4.5/Makefile	2011-02-19 22:45:02.242306040 +0100
++++ ./pppdcapiplugin/ppp-2.4.5/Makefile	2011-02-19 22:45:36.633075668 +0100
+@@ -8,7 +8,7 @@
+ #  as published by the Free Software Foundation; either version
+ #  2 of the License, or (at your option) any later version.
+ 
+-PLUGINDIR=${DESTDIR}/usr/lib/pppd/$(PPPVERSION)
++PLUGINDIR=${DESTDIR}/usr/lib64/pppd/$(PPPVERSION)
+ 
+ include $(TOPDIR)/Rules.make
+ 

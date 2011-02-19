@@ -6,7 +6,7 @@ Summary(de.UTF-8):	CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
 Summary(pl.UTF-8):	Biblioteki i narzędzia konfiguracyjne CAPI 2.0
 Name:		capi4k-utils
 Version:	2005.07.18
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.in-berlin.de/pub/capi4linux/%{name}-2005-07-18.tar.gz
@@ -15,8 +15,13 @@ Source1:	ftp://ftp.in-berlin.de/pub/capi4linux/CHANGES
 # Source1-md5:	03739a0170eba14f03f7dc7ccc58bba8
 Source10:	capi.conf
 Source11:	capi.init
-Patch0:		%{name}-make.patch
-Patch1:		%{name}-amd64.patch
+Patch0:		%{name}-include.patch
+Patch1:		%{name}-make.patch
+Patch2:		%{name}-msg2str_safety.patch
+Patch3:		%{name}-ppd244.patch
+Patch4:		%{name}-ppd245.patch
+Patch5:		%{name}-rcapid.patch
+Patch6:		%{name}-amd64.patch
 URL:		ftp://ftp.in-berlin.de/pub/capi4linux/
 BuildRequires:	libtool
 BuildRequires:	ppp-plugin-devel
@@ -149,8 +154,13 @@ Wtyczka capi dla pppd w wersji %{ppp_ver}.
 %prep
 %setup -q -n %{name}
 %patch0 -p1
-%if "%{_lib}" == "lib64"
 %patch1 -p1
+%patch2 -p0
+%patch3 -p0
+%patch4 -p0
+%patch5 -p1
+%if "%{_lib}" == "lib64"
+%patch6 -p1
 %endif
 
 cat > .config << END
@@ -210,6 +220,7 @@ fi
 %attr(755,root,root) %{_bindir}/capiinfo
 %attr(755,root,root) %{_sbindir}/capiinit
 %attr(755,root,root) %{_sbindir}/avmcapictrl
+%ghost %{_libdir}/libcapi20.so.3
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(754,root,root) /etc/rc.d/init.d/capi
 %{_mandir}/man8/capiinfo.8*
