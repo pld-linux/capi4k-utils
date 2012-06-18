@@ -1,4 +1,5 @@
-
+#
+# Conditional build:
 %bcond_with	capifax	# capifax has some error and won't build right now
 
 Summary:	CAPI 2.0 libraries and configuration tools
@@ -6,7 +7,7 @@ Summary(de.UTF-8):	CAPI 2.0 Werkzeuge für verschiedene ISDN Karten
 Summary(pl.UTF-8):	Biblioteki i narzędzia konfiguracyjne CAPI 2.0
 Name:		capi4k-utils
 Version:	2005.07.18
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Communications
 Source0:	ftp://ftp.in-berlin.de/pub/capi4linux/%{name}-2005-07-18.tar.gz
@@ -139,17 +140,17 @@ Program udostępniający interface CAPI 2.0 przez sieć
 UWAGA: To jest na razie BETA. Tylko do testów.
 
 %package -n ppp-plugin-capi
-Summary:	capiplugin for pppd-%{ppp_ver}
-Summary(pl.UTF-8):	Wtyczka capi dla pppd w wersji %{ppp_ver}
+Summary:	capiplugin for pppd
+Summary(pl.UTF-8):	Wtyczka capi dla pppd
 Group:		Applications/Communications
 Requires:	%{name} = %{version}-%{release}
-Requires:	ppp = 3:%{ppp_ver}
+Requires:	ppp
 
 %description -n ppp-plugin-capi
-capiplugin for pppd-%{ppp_ver}.
+capiplugin for pppd.
 
 %description -n ppp-plugin-capi -l pl.UTF-8
-Wtyczka capi dla pppd w wersji %{ppp_ver}.
+Wtyczka capi dla pppd.
 
 %prep
 %setup -q -n %{name}
@@ -177,8 +178,11 @@ END
 install -p %{SOURCE1} .
 
 %build
-%{__make} subconfig
+%{__make} subconfig \
+	CC="%{__cc}"
+
 %{__make} \
+	CC="%{__cc}"
 	PPPVERSIONS=%{ppp_ver}
 
 %install
@@ -187,6 +191,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	PPPVERSIONS=%{ppp_ver} \
 	DESTDIR=$RPM_BUILD_ROOT
+
+mv $RPM_BUILD_ROOT%{_libdir}/pppd/{%{ppp_ver},plugins}
 
 # Firmware goes here - see LSB and kernel 2.6.x ISDN stuff
 install -d $RPM_BUILD_ROOT%{_datadir}/isdn
@@ -255,5 +261,5 @@ fi
 %defattr(644,root,root,755)
 %exclude %{_sysconfdir}/drdsl
 %exclude %{_sysconfdir}/ppp
-%{_libdir}/pppd/%{ppp_ver}/*
+%{_libdir}/pppd/plugins/*
 %{_mandir}/man8/capiplugin.8*
