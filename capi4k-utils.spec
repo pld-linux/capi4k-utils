@@ -24,6 +24,7 @@ Patch3:		%{name}-ppd244.patch
 Patch4:		%{name}-ppd245.patch
 Patch5:		%{name}-rcapid.patch
 Patch6:		%{name}-amd64.patch
+Patch7:		%{name}-ppd247.patch
 URL:		ftp://ftp.in-berlin.de/pub/capi4linux/
 BuildRequires:	libtool
 BuildRequires:	ppp-plugin-devel
@@ -158,9 +159,8 @@ Wtyczka CAPI dla pppd.
 %patch3 -p0
 %patch4 -p0
 %patch5 -p1
-%if "%{_lib}" == "lib64"
 %patch6 -p1
-%endif
+%patch7 -p1
 
 cat > .config << END
 CONFIG_BINDIR='%{_bindir}'
